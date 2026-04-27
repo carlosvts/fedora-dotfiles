@@ -1,0 +1,79 @@
+{
+    "layer": "top",
+    "position": "top",
+    "ipc": true,
+    "passthrough": false,
+    "exclusive": true,
+    "gtk-layer-shell": true,
+    "height": 42,
+    "spacing": 4,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["sway/language", "memory", "battery", "tray", "bluetooth", "network","custom/power_profile","custom/power"],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "<span color='#82a1f1'></span>",
+            "2": "<span color='#ff966c'></span>",
+            "3": "<span color='#c3e88d'></span>",
+            "4": "<span color='#bb9af7'></span>", 
+            "5": "<span color='#7dcfff'></span>",
+            "default": ""
+        }
+    },
+
+    "battery": {
+        "states": { "warning": 30, "critical": 15 },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "  {used:0.1f}G"
+    },
+
+    "clock": {
+        "format": "  {:%H:%M  󰃭 %a %d/%m}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{unit_calendar}</small></tt>"
+    },
+    "sway/language": {
+    	"format": "⌨️ {}",
+    	"on-click": "~/.config/waybar/scripts/switch_kbd.sh",
+        "tooltip": true
+    },
+
+	"custom/power": {
+    	"format": "⏻",
+    	"on-click": "~/.config/waybar/scripts/power_menu.sh",
+    	"tooltip": false
+    },
+    "custom/power_profile": {
+    	"exec": "powerprofilesctl get",
+    	"interval": 30,
+    	"format": "󰈐 {}",
+    	"on-click": "~/.config/waybar/scripts/change_power_mode.sh",
+    	"tooltip": true
+    },
+    "network": {
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-disconnected": "󰖪 Disconnected",
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "on-click": "nm-connection-editor"
+    },
+    "bluetooth": {
+ 	   "format": " {status}",
+ 	   "format-on": " On",
+    	"format-off": " Off",
+   	 "format-connected": " {device_alias}",
+    	"on-click": "blueman-manager",
+    	"on-click-right": "bluetoothctl power $(bluetoothctl show | grep -q 'Powered: yes' && echo off || echo on)",
+    	"tooltip-format": "L: Gerenciar | R: On/Off"
+    },
+}

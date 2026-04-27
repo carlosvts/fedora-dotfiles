@@ -1,0 +1,1 @@
+neovim, foot, waybar, wofi, brightnessctl, grim, slurp, swaylock

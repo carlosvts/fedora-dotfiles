@@ -1,0 +1,119 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", "Roboto";
+    font-size: 15px;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background-color: rgba(26, 27, 38, 0.85); /* Fundo escuro levemente transparente */
+    color: #cfc9c2;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces button {
+    padding: 0 15px;
+    color: #ffffff;
+    background-color: transparent;
+}
+
+#workspaces button.focused {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid #7aa2f7;
+}
+
+#clock, #memory, #battery {
+    padding: 0 15px;
+    border-radius: 15px;
+    margin: 4px 5px;
+    background-color: #24283b;
+}
+
+/* Cores específicas para os indicadores */
+#clock {
+    color: #7aa2f7;
+    font-weight: bold;
+}
+
+#memory {
+    color: #9ece6a;
+}
+
+#battery {
+    color: #e0af68;
+}
+
+#battery.charging {
+    color: #9ece6a;
+}
+
+#battery.critical:not(.charging) {
+    color: #f7768e;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #f7768e;
+        color: #ffffff;
+    }
+}
+
+#language {
+    background-color: #7aa2f7; /* Azul do seu modo Normal no Vi */
+    color: #1a1b26;
+    padding: 0 10px;
+    margin: 4px;
+    border-radius: 5px;
+}
+
+#custom-power {
+    background-color: #f7768e; /* Vermelho suave */
+    color: #1a1b26;
+    padding: 0 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+window#waybar {
+    /* Garante que a barra não seja transparente para o mouse */
+    background: #1a1b26;  
+}
+
+#custom-power_profile {
+    background-color: #383c4a;
+    color: #ffffff;
+    padding: 0 10px;
+    margin: 0 5px;
+    border-radius: 4px;
+}
+
+#custom-power_profile.performance {
+    color: #ff5555; /* Vermelho para performance */
+}
+
+#custom-power_profile.power-saver {
+    color: #50fa7b; /* Verde para economia */
+}
+
+#bluetooth {
+    padding: 0 10px;
+    color: #ffffff; /* Ajuste conforme seu tema */
+    background: transparent;
+    min-width: 60px; /* Garante que o bloco tenha tamanho mesmo "Off" */
+}
+
+#bluetooth.disabled {
+    color: #555555; /* Cor cinza para indicar estado desligado */
+}
+
+#bluetooth.off, #bluetooth.disabled {
+    background-color: #3b4252; /* Um tom mais escuro/morto */
+    color: #bf616a; /* Vermelho ou cinza */
+}
